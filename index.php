@@ -2,9 +2,8 @@
 
 
         <div class="container">
-            <div class="row">
-                
-                <div class="col-sm-4 ">  
+            <div class="row"> 
+                <div class="col-sm-4">  
                     <div class="card" style="width: 18rem;">
                         <img src="./images/test.jpg" class="card-img-top" alt="...">
                         <div class="card-body">

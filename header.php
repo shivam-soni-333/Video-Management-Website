@@ -12,6 +12,8 @@
 
     <?php if (basename($_SERVER['PHP_SELF']) === 'index.php') { ?>
       <link rel="stylesheet" href="./css/index.css">
+    <?php }elseif(basename($_SERVER['PHP_SELF']) === 'upload.php')  {?>
+      <link rel="stylesheet" href="./css/upload.css">
       <?php } ?>
 
 </head>
@@ -22,10 +24,9 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="register.php">Register</a>
         </li>            
     </ul>
-
