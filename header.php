@@ -15,18 +15,27 @@
     <?php }elseif(basename($_SERVER['PHP_SELF']) === 'upload.php')  {?>
       <link rel="stylesheet" href="./css/upload.css">
       <?php } ?>
-
+    
 </head>
-
+<?php session_start();?>
 <body>
     <ul class="nav justify-content-center">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
+        <?php if(isset($_SESSION["sessionid"]))
+        { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="logout.php">Logout</a>
+          </li>
+        
+        <?php }else{?>
+        
         <li class="nav-item">
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="register.php">Register</a>
-        </li>            
+        </li> 
+        <?php } ?>           
     </ul>
