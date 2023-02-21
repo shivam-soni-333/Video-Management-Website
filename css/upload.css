@@ -1,0 +1,24 @@
+.container{
+    margin:190px auto;
+    border: 2px solid #F99417;
+    color:#AD7BE9;
+    width: 50%;
+}
+.in{
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.space{
+    margin-bottom: 20px;
+}
+#myprogressbar{
+    width: 100%;
+    height: 20px;
+    background-color: grey;
+  
+}
+#progress{
+    width: 1%;
+    background-color: green;
+}
