@@ -17,18 +17,29 @@
       <?php } ?>
     
 </head>
-<?php session_start();?>
+<?php 
+  if(session_id() == "")
+  {  
+    session_start();
+  }
+?>
 <body>
     <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <?php if(isset($_SESSION["sessionid"]))
         { ?>
+         
+
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="upload.php">Upload</a>
+          </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="logout.php">Logout</a>
           </li>
-        
+          
         <?php }else{?>
         
         <li class="nav-item">
@@ -37,5 +48,7 @@
         <li class="nav-item">
           <a class="nav-link" href="register.php">Register</a>
         </li> 
-        <?php } ?>           
+        <?php } ?>          
+        
+      
     </ul>
