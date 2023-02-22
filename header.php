@@ -35,6 +35,10 @@
           <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="upload.php">Upload</a>
           </li>
+
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="my_videos.php">My Videos</a>
+          </li>
         
           <li class="nav-item">
             <a class="nav-link" href="logout.php">Logout</a>
