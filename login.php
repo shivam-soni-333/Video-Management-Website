@@ -35,7 +35,19 @@
                     $_SESSION["username"] = $username;
                     $_SESSION["user_id"] = $id;
                     $_SESSION["role"] = $role;
-                    
+                    $folder_sql = "select * from base_folder where user_id = $id";
+                    $result_folder_sql = mysqli_query($con,$folder_sql);
+                    if($result_folder_sql)
+                    {
+                        while($row=$result_folder_sql->fetch_assoc())
+                        {
+                          $_SESSION["folder_name"] =   $row["folder_name"];
+                          $_SESSION["folder_id"] = $row["id"];
+                        }
+                    }else{
+                        
+                    }
+
                     setcookie("sessionid",$sessionid,$ts);
                     echo true;
                }else{
