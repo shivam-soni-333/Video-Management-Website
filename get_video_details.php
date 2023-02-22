@@ -24,7 +24,7 @@
             }
             $folder_name = $_SESSION["folder_name"];
             $video_nm_without_ext = substr($video_nm,0,strpos($video_nm,"."));
-            $avi = "./uploads/video/".$folder_name."/".$video_nm_without_ext.".avi";
+            $webm = "./uploads/video/".$folder_name."/".$video_nm_without_ext.".webm";
            
             $mkv = "./uploads/video/".$folder_name."/".$video_nm_without_ext.".mkv";
             
@@ -38,7 +38,7 @@
     <br>
     <div class="btn" style="width:50%;margin-left:400px;margin-top:40px">
         <input type="hidden" id="is_conveted" value="<?=$is_converted?>"></input>
-        <button class="change_play_format btn btn-primary" value="<?=$avi?>">AVI Format</button>
+        <button class="change_play_format btn btn-primary" value="<?=$webm?>">WEBM Format</button>
         <button class="change_play_format btn btn-success" value="<?=$mkv?>" >MKV Format</button>
         <button class="change_play_format btn btn-info" style="color:white;" value="<?=$ogg?>">OGG Format</button>
     </div>
