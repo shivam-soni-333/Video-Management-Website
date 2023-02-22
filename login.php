@@ -32,6 +32,10 @@
                {
                     session_start();
                     $_SESSION["sessionid"] = $sessionid;
+                    $_SESSION["username"] = $username;
+                    $_SESSION["user_id"] = $id;
+                    $_SESSION["role"] = $role;
+                    
                     setcookie("sessionid",$sessionid,$ts);
                     echo true;
                }else{
