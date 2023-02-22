@@ -43,7 +43,7 @@
                       
                         if( move_uploaded_file($tmp_name,($folder_path.$uploaded_video_nm)))
                         {
-                                $cmd = 'ffmpeg -ss 00:01:30 -t 10 -i "'.$folder_path.$uploaded_video_nm.'" "'.$folder_path.$uploaded_video_nm_without_ext.'.gif"';
+                                $cmd = 'ffmpeg -ss 00:00:00 -t 10 -i "'.$folder_path.$uploaded_video_nm.'" "'.$folder_path.$uploaded_video_nm_without_ext.'.gif"';
                                 $output_ffmpeg = array();
                                 exec($cmd,$output_ffmpeg,$exit_code);
                                 $gif_nm = $uploaded_video_nm_without_ext.".gif";
