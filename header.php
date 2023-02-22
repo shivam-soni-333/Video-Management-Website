@@ -14,6 +14,8 @@
       <link rel="stylesheet" href="./css/index.css">
     <?php }elseif(basename($_SERVER['PHP_SELF']) === 'upload.php')  {?>
       <link rel="stylesheet" href="./css/upload.css">
+      <?php }elseif(basename($_SERVER["PHP_SELF"]) === 'my_videos.php'){ ?>
+        <link rel="stylesheet" href="./css/my_videos.css">
       <?php } ?>
     
 </head>
