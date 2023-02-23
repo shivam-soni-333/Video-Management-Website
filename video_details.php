@@ -49,6 +49,23 @@
     }
 ?>
     <video id="video" src="./uploads/video/<?=$folder_nm?>/<?=$video_nm?>" width="500" heigt="500" style="margin-left:530px;margin-top:100px;" controls></video>
+    <br><br>
+    <span class="user_details" style="margin-left:42%;border:2px solid #F99417;color:#AD7BE9;background-color:#F0EEED; padding:10px">
+        <?php 
+            $get_user_details = "select * from users where id=$video_user_id";
+            $result_get_user_details= mysqli_query($con,$get_user_details);
+            if($result_get_user_details->num_rows>0)
+            {
+                while($user_result = $result_get_user_details->fetch_assoc())
+                { ?>
+                  This Video is uploaded By  :- <?=$user_result["username"]?>
+               <?php }
+            }else {
+                echo "Error Fetching User Details";
+            }
+        ?>
+        
+    </span>
     <br>
     <div class="btn" id="btn" style="width:50%;margin-left:400px;margin-top:40px;border:none">
         <input type="hidden" id="is_conveted" value="<?=$is_converted?>"></input>
