@@ -12,18 +12,29 @@
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         
-        if(isset($_FILES["video"]) and isset($_POST["title"]) and isset($_POST["thumbnail"])  and count($_FILES) == 1  )
+        if(isset($_FILES["video"]) and isset($_POST["title"])    )
         {
             if($_POST["title"] !="" )
             {
                 $title = htmlspecialchars(strip_tags($_POST['title']));
-                $thumbnail = ($_POST["thumbnail"]=="")?"./default_thumbnail.jpg":htmlspecialchars(strip_tags($_POST["thumbnail"]));
-               
+                if(isset($_FILES["thumbnail"]))
+                {
+                    $thumbnail_tmp_name = ($_FILES["thumbnail"]=="")?"./default_thumbnail.jpg":htmlspecialchars(strip_tags($_FILES["thumbnail"]["tmp_name"]));
+                    $thumbnail_name = ($_FILES["thumbnail"]=="")?"./default_thumbnail.jpg":htmlspecialchars(strip_tags($_FILES["thumbnail"]["name"]));
+                    $is_default_thumbnail = 0;
+                }
+                else{
+                    $thumbnail_tmp_name  = "./default_thumbnail.jpg";
+                    $thumbnail_name  = "./default_thumbnail.jpg";
+                    $is_default_thumbnail = 1;
+                }
+                 
                 $video_nm = htmlspecialchars(strip_tags($_FILES["video"]["name"]));
                 $tmp_name = htmlspecialchars(strip_tags($_FILES["video"]["tmp_name"]));
                 $type = htmlspecialchars(strip_tags($_FILES["video"]["type"]));
                 $uid = $_SESSION['user_id']; // user id 
                 $username = $_SESSION["username"];
+
                 if($type=='video/mp4')
                 {
                     $sql_for_folder = "select * from base_folder where(user_id=$uid)"; // get folder of particular user
@@ -38,9 +49,15 @@
                         }
                         $folder_path = ".\\uploads\\video\\".$folder_name."\\";
                        
+                        //move thumbnail 
+                        if($is_default_thumbnail==0) // ifnot default thumbnail
+                        {
+                            move_uploaded_file($thumbnail_tmp_name,($folder_path.$thumbnail_name));
+                        }
+
                         $uploaded_video_nm = $uid."_".$username."_video_".time().".mp4"; // generate random video name 
                         $uploaded_video_nm_without_ext = substr($uploaded_video_nm,0,strpos($uploaded_video_nm,"."));
-                      
+                        
                         if( move_uploaded_file($tmp_name,($folder_path.$uploaded_video_nm)))
                         {
                                 $cmd = 'ffmpeg -ss 00:00:00 -t 10 -i "'.$folder_path.$uploaded_video_nm.'" "'.$folder_path.$uploaded_video_nm_without_ext.'.gif"';
@@ -49,7 +66,7 @@
                                 $gif_nm = $uploaded_video_nm_without_ext.".gif";
                                 if($exit_code == 0)
                                 {
-                                    $insert_video_details_query = "insert into videos(title,user_id,folder_id,thumbnail_nm,gif_nm,video_nm,is_converted)values('$title',$uid,$folder_id,'$thumbnail','$gif_nm','$uploaded_video_nm','false')";
+                                    $insert_video_details_query = "insert into videos(title,user_id,folder_id,thumbnail_nm,gif_nm,video_nm,is_converted)values('$title',$uid,$folder_id,'$thumbnail_name','$gif_nm','$uploaded_video_nm','false')";
                                     $result_of_video_details_query = mysqli_query($con,$insert_video_details_query);  
                                     if($result_of_video_details_query)
                                     {
@@ -136,13 +153,13 @@
                     var formdata= new FormData();
                     let video = document.getElementById("video_input");
                     let title = document.getElementById("title").value;
-                    let thumbnail = document.getElementById("thumbnail").value;
+                    let thumbnail = document.getElementById("thumbnail");
 
                     if(title!="" && video.files[0] != "" )
                     {
                         formdata.append("video",video.files[0]);
                         formdata.append("title",title);
-                        formdata.append("thumbnail",thumbnail);
+                        formdata.append("thumbnail",thumbnail.files[0]);
 
                         xhr.upload.addEventListener("progress",(event)=>{
                             if(event.lengthComputable){
