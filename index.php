@@ -35,7 +35,7 @@
                                 <img src="<?=$thumbnail_nm?>" class="card-img-top" alt="...">
                                 <div class="card-body">
                                 <h5 class="card-title"><?=$video_title?></h5>
-                                <a href="#" class="btn btn-primary">Play Video</a>
+                                <a href="video_details.php?video_id=<?=$video_id?>" class="btn btn-primary">Play Video</a>
                                 <input type="hidden"  id="gif_path" value="<?=$gif_path?>">
                                 <input type="hidden"  id="img_path" value="<?=$thumbnail_nm?>">
                                 </div>
