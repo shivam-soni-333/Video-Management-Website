@@ -36,7 +36,7 @@
 ?>
     <video id="video" src="./uploads/video/<?=$folder_name?>/<?=$video_nm?>" width="500" heigt="500" style="margin-left:530px;margin-top:100px;" controls></video>
     <br>
-    <div class="btn" style="width:50%;margin-left:400px;margin-top:40px">
+    <div class="btn" style="width:50%;margin-left:400px;margin-top:40px;border:none">
         <input type="hidden" id="is_conveted" value="<?=$is_converted?>"></input>
         <button class="change_play_format btn btn-primary" value="<?=$webm?>">WEBM Format</button>
         <button class="change_play_format btn btn-success" value="<?=$mkv?>" >MKV Format</button>
