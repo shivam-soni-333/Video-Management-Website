@@ -1,77 +1,53 @@
-<?php include('header.php');?>
-
-
+<?php
+    require("db_con.php");
+    include('header.php');
+?>
         <div class="container">
             <div class="row"> 
-                <div class="col-sm-4">  
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        <input type="hidden" name="key" value="t1">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-sm-4 ">  
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        <input type="hidden" name="key" value="t2">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-sm-4">  
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
+            <?php
+                $sql_for_fetch_video="select videos.id,title,videos.user_id,thumbnail_nm,gif_nm,video_nm,folder_name from videos inner join base_folder on videos.folder_id=base_folder.id;";
+                $result_for_fetch_videos = mysqli_query($con,$sql_for_fetch_video);
+                if($result_for_fetch_videos)
+                {
+                    while($row=$result_for_fetch_videos->fetch_assoc())
+                    {  
+                        $video_id = $row["id"];
+                        $video_title = $row["title"];
+                        $video_user_id = $row["user_id"];
+                        $thumbnail_nm = $row["thumbnail_nm"];
+                        $gif_nm = $row["gif_nm"];
+                        $video_nm = $row["video_nm"];
+                        $folder_nm = $row["folder_name"];
+                        
+                        $folder_path = "./uploads/video/".$folder_nm."/";
+                        if($thumbnail_nm  == "./default_thumbnail.jpg")
+                        {
+                           
+                        }else{
+                            $thumbnail_nm = $folder_path . $thumbnail_nm;
+                        }
+                        $gif_path = $folder_path.$gif_nm;
 
-                <div class="col-sm-4">  
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
+                        ?>
 
-                <div class="col-sm-4">  
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="col-sm-4">  
+                            <div class="card" style="width: 18rem;">
+                                <img src="<?=$thumbnail_nm?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title"><?=$video_title?></h5>
+                                <a href="#" class="btn btn-primary">Play Video</a>
+                                <input type="hidden"  id="gif_path" value="<?=$gif_path?>">
+                                <input type="hidden"  id="img_path" value="<?=$thumbnail_nm?>">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-sm-4">  
-                    <div class="card" style="width: 18rem;">
-                        <img src="./images/test.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
+                <?php       }
+                }else{
+                    echo "<p style='color:red'>Error while feteching video</p>";
+                }
+            ?>              
 
-          
                 
             </div> <!-- end row class-->
         </div> <!-- end container-->
@@ -85,7 +61,10 @@
                     ele[i].className +=' hov';
                     let card = ele[i].getElementsByClassName('card')[0];        
                     var img = card.getElementsByTagName('img')[0];
-                    img.setAttribute('src','./images/test_gif.gif'); 
+                  
+                    var gif_path = card.getElementsByTagName("input")[0];
+                   
+                    img.setAttribute('src',gif_path.value); 
                     img.setAttribute('height','150px');
                 }else{
                  
@@ -101,7 +80,8 @@
                 ele[i].classList.remove('hov');
                 let card = ele[i].getElementsByClassName('card')[0];
                 let img  = card.getElementsByTagName('img')[0];
-                img.setAttribute('src','./images/test.jpg');
+                var img_path =card.getElementsByTagName("input")[1];
+                img.setAttribute('src',img_path.value);
                 img.removeAttribute('height');
             }});
        }
