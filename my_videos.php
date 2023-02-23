@@ -83,7 +83,7 @@
                     let card = ele[i].getElementsByClassName('card')[0];        
                     var img = card.getElementsByTagName('img')[0];
                   
-                    var gif_path = document.getElementById("gif_path");
+                    var gif_path = card.getElementsByTagName("input")[0];
                     img.setAttribute('src',gif_path.value); 
                     img.setAttribute('height','150px');
 
@@ -101,7 +101,7 @@
                 ele[i].classList.remove('hov');
                 let card = ele[i].getElementsByClassName('card')[0];
                 let img  = card.getElementsByTagName('img')[0];
-                var img_path =document.getElementById("img_path");
+                var img_path =card.getElementsByTagName("input")[1];
                 img.setAttribute('src',img_path.value);
                 img.removeAttribute('height');
             }});
