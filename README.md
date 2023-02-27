@@ -17,3 +17,9 @@ Please create an interactive JavaScript/React app which has:
 4.Watermark: For uploaded video — a user can provide watermark text — give an option for the user to specify text — and use user-provided text to add that in the video as watermark.
 
 ```
+
+## My Solution :-
+
+1.Upload Functionality :-
+  -> it mentioned that video is large and we need to show progress so that's why i choose javascript to do this work since we can use XMLHttpRequest object for upload and also we can know upload size and progress of upload.
+  refer :- upload.php[^1]
