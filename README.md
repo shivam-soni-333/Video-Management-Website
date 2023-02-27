@@ -27,8 +27,8 @@ Please create an interactive JavaScript/React app which has:
  
  2.Convertion Process :- 
   
-  -> This part is a little bit tricky and quite interesting and challenging for me since I need to use **ffmpeg and background processing**.
-  -> so basically i need to encode video (i change defination little bit ) so i am converting mp4 into mkv,avi,webm .
+  -> This part is a little bit tricky and quite interesting and challenging for me since I need to use **ffmpeg and background processing**.<br>
+  -> so basically i need to encode video (i change defination little bit ) so i am converting mp4 into mkv,avi,webm.<br>
   -> So here is my solution :- 
    
    <img src="./images/upload_php.png" alt="upload functionality workflow"></img>
