@@ -20,7 +20,17 @@ Please create an interactive JavaScript/React app which has:
 
 ## My Solution :-
 
-1.Upload Functionality :- <br>
+1.Upload Functionality :- <br><br>
   -> it mentioned that video is large and we need to show progress so that's why i choose javascript to do this work since we can use XMLHttpRequest object for upload and also we can know upload size and progress of upload.
  
  Refer :- <a href="./upload.php">Upload.php</a>
+ 
+ 2.Convertion Process :- 
+  
+  -> This part is a little bit tricky and quite interesting and challenging for me since I need to use **ffmpeg and background processing**.
+  -> so basically i need to encode video (i change defination little bit ) so i am converting mp4 into mkv,avi,webm .
+  -> So here is my solution :- 
+   
+   <img src="./images/upload_php.png" alt="upload functionality workflow"></img>
+  
+  
