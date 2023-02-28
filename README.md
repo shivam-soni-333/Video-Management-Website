@@ -45,3 +45,15 @@ Please create an interactive JavaScript/React app which has:
    1  -> video is converted.
    
    ```
+3. Thumbnail ( GIF ) :-<br>
+-> when user uploads a video i am converting it to 10 seconds gif and store video as well as gif in user's dedicated folder.<br>
+-> with javascript and css i can easily showcase gif when user mouse over on container.<br>
+
+4. **watermarking** :- <br>
+-> for watermarking we need to take user input. <br> 
+-> after taking input i am creating one process that add watermark to particular video in background (so user does not require to wait for watermarking ).<br>
+-> Two php files in this project handling watermark first one is add_watermark.php this file get user input (like video_id,watermark_text)from post request after that this file will create background process and run following command :- <br><br>
+  ``` php add_watermark_background_process.php $video_id $input_video_name $output_video_name $watermark_text ```  <br>  
+ -> and second file add_watermark_background_process.php will run  following ffmpeg command :-<br>
+ ``` ffmpeg -i $input_video_name -vf  -vf \"drawtext=text='$watermark_text':x=10:y=30:fontsize=60:fontcolor=red\" -y   $output_video_name ``` <br>
+-> Refer :- <a href="./add_watermark.php">add_watermark.php</a> and <a href="./add_watermark_background_process.php">watermark background process</a> 
