@@ -60,3 +60,6 @@ Please create an interactive JavaScript/React app which has:
 
 ## GIF Preview 
 <img src="./images/gif_preview.gif" alt="mouse over effect (gif) "></img>
+
+## Watermark Functionality 
+<img src="./images/watermark.gif" alt="watermark"></img>
