@@ -58,5 +58,5 @@ Please create an interactive JavaScript/React app which has:
  ``` ffmpeg -i $input_video_name -vf  -vf \"drawtext=text='$watermark_text':x=10:y=30:fontsize=60:fontcolor=red\" -y   $output_video_name ``` <br>
 -> Refer :- <a href="./add_watermark.php">add_watermark.php</a> and <a href="./add_watermark_background_process.php">watermark background process</a><br>
 
-## GIF Preview :-
-<video src="./gif_preview.mp4" autoplay controls></video>
+## GIF Preview 
+<img src="./images/gif_preview.gif" alt="mouse over effect (gif) "></img>
