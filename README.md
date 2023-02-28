@@ -35,3 +35,12 @@ Please create an interactive JavaScript/React app which has:
    <br>
    ## Workflow of run_forever.php
    <img src="./images/run_forever.drawio.png" alt="run forver file workflow"></img>
+   
+   ```
+   
+   There will be 3 possible value of database field.
+   0  -> video is not in converstion process.
+   -1 -> video is currently in converstion process.
+   1  -> video is converted.
+   
+   ```
